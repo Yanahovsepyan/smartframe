@@ -1,3 +1,7 @@
+images/*
+weaterIcon.png
+weaterIcon.jpg
+old/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
