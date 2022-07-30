@@ -1,34 +1,31 @@
 
 import datetime
-from http.client import ImproperConnectionState
-from turtle import width
 import cv2
 import numpy as np
 from math import ceil
 import os
 import time       
 import natsort
+from sync import getdeletedimgs, getdownloadedimgs
 import weather
 import black
-
-
 from PIL import ImageFont, ImageDraw, Image
+
+
 
 weatherObj = weather.getWeather()
 if weatherObj:
     weather.getImage(weatherObj)
 
-
-
 width = 500 
 height = 500 
 
 dst = "./images/"       # Images destination
+
+# Get image names in a list
 images = os.listdir(dst)
 images = natsort.natsorted(images)   
- # Get their names in a list
 
-print(images)
 length = len(images)
 
 result = np.zeros(( width, height ,3), np.uint8)        # Image window of size 
@@ -42,13 +39,21 @@ if weatherObj != 0:
    
 img = cv2.imread(dst + 'cache/new.png')
 
-       
-
 opacityImg = cv2.imread('images/opacity.png')
 # Slide Show Loop
-print(str(datetime.datetime.now().strftime("%H:%M:%S")))
+
+lastTime = time.time()
 while(True):
-    if(ceil(a)==0):
+    if(time.time() >  lastTime + 1200):
+
+        getdeletedimgs()
+        getdownloadedimgs()
+        images = os.listdir(dst)
+        images = natsort.natsorted(images)   
+
+        length = len(images)  
+        lastTime = time.time()
+    if(ceil(a)==0): 
         a = 1.0
         b = 0.0
         i = (i+1)%length    # Getting new image from directory
@@ -61,15 +66,9 @@ while(True):
         if weatherObj != 0:
             black.weatherIconToImg(dst + 'cache/new.png')
         img = cv2.imread(dst + 'cache/new.png')
-        print(str(datetime.datetime.now().strftime("%H:%M:%S")))
-
- 
 
     a -= 0.001
     b += 0.001
-
-
-
 
     # Convert to PIL Image
     cv2_im_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
@@ -89,14 +88,13 @@ while(True):
     # Save the image
     cv2_im_processed = cv2.cvtColor(np.array(pil_im), cv2.COLOR_RGB2BGR)
 
-
-
     # Image Transition from one to another
     result = cv2.addWeighted(result, a, cv2_im_processed, b, 0)
 
     cv2.imshow("window", result)
     time.sleep(0.3)
     key = cv2.waitKey(1) & 0xff
+
 
 
     if key==ord('q'):

@@ -1,4 +1,3 @@
-from unicodedata import name
 import requests
 from delete import removeImage
 from downloadimg import getImage
