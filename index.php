@@ -6,6 +6,7 @@ ini_set('display_errors', 'On');
 <!Doctype html>
 <html lang="en">
   <head>
+    <link rel="icon" type="image/x-icon" href="LOGO.png">
     <h3 class = "id" style="margin-top: 15px ;" >Smart Frame</h3>
     <h6 style="text-align: center ; margin-top: 45px; "   >Here you can upload images , and uploaded images you will see in slide, if you don't want to see uploaded image in slide you can delete it from slide. </h6>
     <!-- Bootstrap CSS -->
