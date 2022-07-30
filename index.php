@@ -6,12 +6,18 @@ ini_set('display_errors', 'On');
 <!Doctype html>
 <html lang="en">
   <head>
+    <h3 class = "id" style="margin-top: 15px ;" >Smart Frame</h3>
+    <h6 style="text-align: center ; margin-top: 45px; "   >Here you can upload images , and uploaded images you will see in slide, if you don't want to see uploaded image in slide you can delete it from slide. </h6>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <style>
+    
+      .id{
+        text-align: center;
+      }
       .custom-file-input:lang(en)~.custom-file-label::after {
     content: "Browse";
     }
@@ -25,7 +31,7 @@ ini_set('display_errors', 'On');
       }
       .image{
         position:relative;
-        width:300px;
+        width: 370px;
         height: 300px;
       }
       .image>.delete:active{
@@ -34,8 +40,8 @@ ini_set('display_errors', 'On');
       }
       .image > .delete{
         position: absolute;
-        right: 75px ;
-        top: 95px;
+        right: 115px ;
+        top: 40px;
         width: 150px;
         height: 60px;
         z-index: 999999;
@@ -43,8 +49,8 @@ ini_set('display_errors', 'On');
     
       .image > .cancel{
         position: absolute;
-        right: 75px ;
-        bottom: 80px;
+        right: 115px ;
+        bottom: 125px;
         width: 150px;
         height: 60px;
         z-index: 999999;
@@ -74,7 +80,7 @@ ini_set('display_errors', 'On');
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Modal Heading</h4>
+        <h4 class="modal-title">Image deleted</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
@@ -100,7 +106,7 @@ ini_set('display_errors', 'On');
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Modal Heading</h4>
+        <h4 class="modal-title">Image uploaded</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
@@ -121,10 +127,10 @@ ini_set('display_errors', 'On');
     <div class="col">
       <div class="custom-file"> 
         <form action="upload.php" method="post" enctype="multipart/form-data" >
-          <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
-            <input id="upload" type="file" name="fileToUpload" onchange="readURL(this);" class="form-control border-0">
+          <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm" style="margin-top: 80px;" >
+            <input id="upload"  style="padding: 0px;" type="file" name="fileToUpload"  onchange="readURL(this);"  class="form-control border-0">
             <div class="input-group-append">
-              <input type="submit" class="btn btn-outline-secondary"  accept="image/png, image/gif, image/jpeg" data-toggle="modal" data-target="#myModal" value="Վերբեռնել" name="submit">
+              <input type="submit" class="btn btn-outline-secondary"  accept="image/png, image/gif, image/jpeg" data-toggle="modal" data-target="#myModal" value="Upload" name="submit">
             </div>
           </div>
           </div>
@@ -213,6 +219,6 @@ ini_set('display_errors', 'On');
       `;
   }
 </script>
-    
+      <p class="f" style= " text-align: center;  margin-top: 200px; "  > Created by: Ruben Petrosyan and Yana Hovsepyan with ❤️. </p>
   </body>
 </html>
